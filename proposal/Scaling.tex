@@ -1,0 +1,121 @@
+%\documentclass[11pt]{article}  % for e-submission to ApJ
+\documentclass[11pt]{NSF}  % for e-submission to ApJ
+
+%\documentclass[12pt,preprint2]{aastex}  % for e-submission to ApJ - two column
+
+%\documentclass[manuscript]{emulateapj}  % this makes everything look like ApJ
+
+\usepackage{graphicx, natbib, color, bm, amsmath, epsfig}
+\input{aas_papers.tex}
+\input{commands.tex}
+\input{names}
+\citestyle{aa}  % correct formatting for ApJ style files
+
+\usepackage{aas_macros}
+\begin{document}
+
+\begin{centering}
+\begin{LARGE}
+Scaling Information for 
+
+``Four Projects in Astrophysical Magnetohydrodynamics''
+\end{LARGE}
+
+David Collins, PI
+
+\end{centering}
+
+
+\pagestyle{plain}
+
+
+In order to quantify the performance and scaling, and to select the number of
+nodes to use for our jobs, we perform weak scaling studies for each of our four
+simulations.  For each suite of simulations, we perform a strong scaling study
+that targets the physics packages, root grid size, particle
+count, and approximates the unpredictable adaptive mesh refinement (AMR)
+structure of the production simulations.  
+We perform a single time step on
+the root grid, which takes many time steps on the subgrids. Also included in our
+estimation are reading and writing the data and initialization.  The simulations
+are run on a variety of node counts, depending on the package.
+
+The results can be seen in Figure \ref{fig.scaling}. Shown in the figure is \suzu, the number of
+service units for the update of one cell, assuming 64 cores per node.  Each of
+our four suites uses a different set of physics modules, which changes the cost
+between suites.  Additionally they have different adaptive mesh refinement (AMR)
+structure, which changes the overhead.  We discuss each suite below.
+
+The quantity $\mu= core-hours/zone-update$, given perfect scaling, is
+independent of the problem size and number of cores used.  It depends only on the
+combination physics solvers.  $\suzu=\frac{\mu}{Nc/Nn}$ is then the cost per
+zone-update, and the total cost $SU=\suzu Z U$, where $Z$ is the total number of
+zones, and $U$ is the total number of updates.  $\suzu$\ also depends on the
+number of cores per node.  For all runs we use 64 cores per node.  Given perfect scaling, $SU$ is independent of
+processor count.  Our scaling is imperfect, and the optimal node number is
+selected from  the Figure. 
+
+The \red{blue} line shows a set of fiducial simulations that use only the
+relevant hydro solvers and gravity.  The hydro (or MHD) solver and gravity
+solver are the most expensive part of the code, so we present their timing alone
+as a baseline.
+The simulations use either Piecewise
+Parabolic Method \citep{Woodward84} for the pure hydro turbulence simulations,
+or the second order MHD scheme of \citep{Li08} for the other three.  The points
+in the blue line are, bottom to top, PPM, MHD, PPM+Gravity, MHD+Gravity.  
+
+The \red{orange} line shows the scaling for the fiducial \nameTurbulence\
+simulations.  These simulations will only use PPM and the driving module.  The
+fiducial simulation is, as the production simulations will be, $1024^3$ root
+grid with no AMR.
+ We run on 4, 8, 16, and 32 nodes, 64 cores per node.  The result is
+$\suzu=2\sci{-11}$ on 4 cores, and $4\sci{-11}$ for 32 nodes.  We will run on 32
+nodes, as the small increase in cost will be offset by the much shorter run
+time.
+
+The \red{green} curve shows the weak scaling for the fiducial \nameCores\
+simulation.  This simulation has $512^3$ zones and $1024^3$ tracer particles.
+On each of 4 levels, we refine a cubic region with volume identical to the simulations
+in \citep{Collins12}.  We additionally use the gravity solver and MHD solvers.
+For this simulation, the density and pressure are uniform, which simplifies the
+setup but does not affect the timing of the solver.  \red{what number I use}
+
+The \red{red} line shows the scaling for the \nameCMB\ simulations. The fiducial
+simulation is also $1024^3$ and driving like the \nameTurbulence\ suite, but uses the MHD solver so is slightly more
+expensive.  Due to the increased memory of the extra magnetic fields, we run on
+8, 16, and 32 nodes.  We find $\suzu=2\sci{-11}-7\sci{-11}$.  
+Again, we will use 32 nodes due to the short run times.
+
+The final suite is the \nameGalaxies\ suite, shown in \red{purple}.  This suite
+employs the most additional physics packages (including star formation,
+cooling and heating, and chemistry).  The AMR structure, outlined in greater
+detail in the main document, is a nest of refinements, each about 1/8 of its
+parent by volume (about half the length), that allows us to resolve both the disk and the circumgalactic medium.
+It also gives roughly constant memory per level.
+The fiducial simulations use 5 levels of refinement, rather than the target
+9, but the amount of overhead relative to useful work doesn't change much going
+from 5 to 9 levels  We use the same target root grid of 1.3 Mpc in physical
+size and 256 zones on a side.  The AMR structure that Enzo produces is coincidentally 64 grid
+patches per level, so we run our scaling study from 1 to 5 nodes with 64 cores
+per node.     
+This scaling is good, rising from $2\sci{-11}$ to $3\sci{-11}$. The refinement
+structure will continue to 9 levels in the production runs, so we will use 9
+nodes for them.  
+
+\begin{figure} \begin{center}
+    \includegraphics[width=0.99\textwidth]{figs/g47_zoneup.pdf}
+\caption[ ]{The cost per zone-update for each of our simulation suites.  
+Each fiducial simulation is nearly identical to the target production
+simulations.
+    }
+
+\label{fig.scaling} \end{center} \end{figure}
+
+
+
+\bibliographystyle{apj}
+\bibliography{apj-jour,ms.bib}  % looks in ms.bib for bibliography info
+
+\end{document}  
+
+
