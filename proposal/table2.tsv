@@ -1,57 +1,57 @@
-\begin{table}																							
-																							
-\begin{center}																							
-																							
-\caption{ STUFF }																							
-\label{table2}																							
-\begin{tabular}{l		c		r			r		r		r			r			r		r		r	}	
-\hline																							
-suite	&	$\sigma_v$	&	$\Delta x$		&	fv	&	\Nz	&	T		&	Delta T		&	\Nz \Nu	&	\suzu	&	su		\\
-turb	&	0.5	&	1/1024		&	1	&	1.1E+09	&	2.0		&	7E-06		&	3.0E+14	&	2.0E-11	&	6.1E+03		\\
-turb	&	1.0	&	1/1024		&	1	&	1.1E+09	&	1.0		&	5E-06		&	2.0E+14	&	2.0E-11	&	4.0E+03		\\
-turb	&	2.0	&	1/1024		&	1	&	1.1E+09	&	0.5		&	4E-06		&	1.5E+14	&	2.0E-11	&	3.0E+03		\\
-turb	&	4.0	&	1/1024		&	1	&	1.1E+09	&	0.3		&	2E-06		&	1.3E+14	&	2.0E-11	&	2.5E+03		\\
-turb	&	7.0	&	1/1024		&	1	&	1.1E+09	&	0.1		&	1E-06		&	1.2E+14	&	2.0E-11	&	2.3E+03		\\
-\hline																							
-	&		&			&		&		&			&			&		&	SU	&	1.8E+04		\\
-	&		&			&		&		&			&			&		&	Disk	&	5.6E+03		\\
-\hline																							
-suite	&	$\ell$	&	$\Delta x$		&	fv	&	\Nz	&	T		&	Delta T		&	\Nz \Nu	&	\suzu	&	su		\\
-cores	&	0	&	1.0	pc	&	1.00	&	1.1E+09	&	1	Myr	&	3E-03	Myr	&	3.1E+11	&	6.3E-11	&	2.0E+01		\\
-cores	&	1	&	0.5	pc	&	0.46	&	4.0E+09	&	1	Myr	&	2E-03	Myr	&	2.3E+12	&	6.3E-11	&	1.4E+02		\\
-cores	&	2	&	0.2	pc	&	0.08	&	5.7E+09	&	1	Myr	&	9E-04	Myr	&	6.6E+12	&	6.3E-11	&	4.1E+02		\\
-cores	&	3	&	0.1	pc	&	0.01	&	7.0E+09	&	1	Myr	&	4E-04	Myr	&	1.6E+13	&	6.3E-11	&	1.0E+03		\\
-cores	&	4	&	0.1	pc	&	0.00	&	8.0E+09	&	1	Myr	&	2E-04	Myr	&	3.7E+13	&	6.3E-11	&	2.3E+03		\\
-\hline																							
-	&		&			&		&		&			&			&		&	per sim	&	3.9E+03		\\
-	&		&			&		&		&			&			&		&	SU	&	1.2E+04		\\
-	&		&			&		&		&			&			&		&	Disk	&	1.6E+05		\\
-suite	&	$M_{s,a}$	&	$\Delta x$		&	fv	&	\Nz	&	T		&	Delta T		&	\Nz \Nu	&	\suzu	&	su		\\
-\hline																							
-CMB	&	1,1	&	1/1024		&	1.00	&	1.1E+09	&	3		&	4E-05		&	7.4E+13	&	6.2E-11	&	4.6E+03		\\
-CMB	&	1,5	&	1/1024		&	1.00	&	1.1E+09	&	3		&	1E-05		&	2.2E+14	&	6.2E-11	&	1.4E+04		\\
-CMB	&	5,1	&	1/1024		&	1.00	&	1.1E+09	&	0.6		&	1E-05		&	4.5E+13	&	6.2E-11	&	2.8E+03		\\
-CMB	&	5,5	&	1/1024		&	1.00	&	1.1E+09	&	0.6		&	9E-06		&	7.4E+13	&	6.2E-11	&	4.6E+03		\\
-\hline																							
-	&		&			&		&		&			&			&		&	SU	&	2.6E+04		\\
-	&		&			&		&		&			&			&		&	Disk	&	1.7E+04		\\
-suite	&	$\ell$	&	$\Delta x$		&	fv	&	\Nz	&	T		&	Delta T		&	\Nz \Nu	&	\suzu	&	su		\\
-\hline																							
-galaxy	&	0	&	1.3E+06	pc	&	1.00E+00	&	1.7E+07	&	1	Gyr	&	4E-04	Gyr	&	4.8E+10	&	3.0E-10	&	1.4E+01		\\
-galaxy	&	1	&	2.6E+03	pc	&	1.00E+00	&	1.3E+08	&	1	Gyr	&	2E-04	Gyr	&	7.6E+11	&	3.0E-10	&	2.3E+02		\\
-galaxy	&	2	&	1.3E+03	pc	&	1.22E-01	&	1.3E+08	&	1	Gyr	&	9E-05	Gyr	&	1.5E+12	&	3.0E-10	&	4.5E+02		\\
-galaxy	&	3	&	6.4E+02	pc	&	2.92E-02	&	2.5E+08	&	1	Gyr	&	4E-05	Gyr	&	5.7E+12	&	3.0E-10	&	1.7E+03		\\
-galaxy	&	4	&	3.2E+02	pc	&	4.15E-03	&	2.9E+08	&	1	Gyr	&	2E-05	Gyr	&	1.3E+13	&	3.0E-10	&	3.9E+03		\\
-galaxy	&	6	&	8.0E+01	pc	&	3.93E-04	&	1.7E+08	&	1	Gyr	&	6E-06	Gyr	&	3.1E+13	&	3.0E-10	&	9.4E+03		\\
-galaxy	&	9	&	1.0E+01	pc	&	3.93E-05	&	8.8E+07	&	1	Gyr	&	7E-07	Gyr	&	1.3E+14	&	3.0E-10	&	3.9E+04		\\
-\hline																							
-	&		&			&		&		&			&			&		&	per sim	&	5.4E+04		\\
-	&		&			&		&		&			&			&		&	SU	&	1.1E+05		\\
-	&		&			&		&		&			&			&		&	Disk	&	1.1E+04		\\
-\hline																							
-\hline																							
-	&		&			&		&		&			&			&		&	SU	&	1.64E+05		\\
-	&		&			&		&		&			&			&		&	Disk	&	1.9E+05		
-\end{tabular}																							
-\end{center}																							
-\end{table}																							
+																				
+																				
+																				
+																				
+																				
+\begin{table} \begin{center} \input{table2_caption} \label{table2}																				
+\begin{tabular}{l		c		r		r		r			r			r		r		r	}	
+suite	&	$M_s$	&	$f_\ell$	&	\Nz	&	T		&	$\Delta T$		&	\Nz \Nu	&	\suzu	&	SU		\\
+\hline																				
+\nameTurbulence	&	0.5	&	1	&	1.1E+09	&	2.0		&	7E-06		&	3.0E+14	&	2.0E-11	&	6.1E+03		\\
+\nameTurbulence	&	1.0	&	1	&	1.1E+09	&	1.0		&	5E-06		&	2.0E+14	&	2.0E-11	&	4.0E+03		\\
+\nameTurbulence	&	2.0	&	1	&	1.1E+09	&	0.5		&	4E-06		&	1.5E+14	&	2.0E-11	&	3.0E+03		\\
+\nameTurbulence	&	4.0	&	1	&	1.1E+09	&	0.3		&	2E-06		&	1.3E+14	&	2.0E-11	&	2.5E+03		\\
+\nameTurbulence	&	7.0	&	1	&	1.1E+09	&	0.1		&	1E-06		&	1.2E+14	&	2.0E-11	&	2.3E+03		\\
+\hline																				
+	&		&		&		&			&			&		&	SU	&	1.8E+04		\\
+	&		&		&		&			&			&		&	Disk	&	5.6E+03		\\
+suite	&	$\ell$	&	$f_\ell$	&	\Nz	&	T		&	$\Delta T$		&	\Nz \Nu	&	\suzu	&	SU		\\
+\hline																				
+\nameCores	&	0	&	1.00E+00	&	1.1E+09	&	1	Myr	&	3E-03	Myr	&	3.1E+11	&	6.3E-11	&	2.0E+01		\\
+\nameCores	&	1	&	4.61E-01	&	4.0E+09	&	1	Myr	&	2E-03	Myr	&	2.3E+12	&	6.3E-11	&	1.4E+02		\\
+\nameCores	&	2	&	8.26E-02	&	5.7E+09	&	1	Myr	&	9E-04	Myr	&	6.6E+12	&	6.3E-11	&	4.1E+02		\\
+\nameCores	&	3	&	1.27E-02	&	7.0E+09	&	1	Myr	&	4E-04	Myr	&	1.6E+13	&	6.3E-11	&	1.0E+03		\\
+\nameCores	&	4	&	1.81E-03	&	8.0E+09	&	1	Myr	&	2E-04	Myr	&	3.7E+13	&	6.3E-11	&	2.3E+03		\\
+\hline																				
+	&		&		&		&			&			&		&	per sim	&	3.9E+03		\\
+	&		&		&		&			&			&		&	SU	&	1.2E+04		\\
+	&		&		&		&			&			&		&	Disk	&	1.6E+05		\\
+suite	&	$M_{s,a}$	&	$f_\ell$	&	\Nz	&	T		&	$\Delta T$		&	\Nz \Nu	&	\suzu	&	SU		\\
+\hline																				
+\nameCMB	&	1,1	&	1	&	1.1E+09	&	3		&	4E-05		&	7.4E+13	&	6.2E-11	&	4.6E+03		\\
+\nameCMB	&	1,5	&	1	&	1.1E+09	&	3		&	1E-05		&	2.2E+14	&	6.2E-11	&	1.4E+04		\\
+\nameCMB	&	5,1	&	1	&	1.1E+09	&	0.6		&	1E-05		&	4.5E+13	&	6.2E-11	&	2.8E+03		\\
+\nameCMB	&	5,5	&	1	&	1.1E+09	&	0.6		&	9E-06		&	7.4E+13	&	6.2E-11	&	4.6E+03		\\
+\hline																				
+	&		&		&		&			&			&		&	SU	&	2.6E+04		\\
+	&		&		&		&			&			&		&	Disk	&	1.7E+04		\\
+suite	&	$\ell$	&	$f_\ell$	&	\Nz	&	T		&	$\Delta T$		&	\Nz \Nu	&	\suzu	&	SU		\\
+\hline																				
+\nameGalaxies	&	0	&	1.00E+00	&	1.7E+07	&	1	Gyr	&	4E-04	Gyr	&	4.8E+10	&	3.0E-10	&	1.4E+01		\\
+\nameGalaxies	&	1	&	1.00E+00	&	1.3E+08	&	1	Gyr	&	2E-04	Gyr	&	7.6E+11	&	3.0E-10	&	2.3E+02		\\
+\nameGalaxies	&	2	&	1.22E-01	&	1.3E+08	&	1	Gyr	&	9E-05	Gyr	&	1.5E+12	&	3.0E-10	&	4.5E+02		\\
+\nameGalaxies	&	3	&	2.92E-02	&	2.5E+08	&	1	Gyr	&	4E-05	Gyr	&	5.7E+12	&	3.0E-10	&	1.7E+03		\\
+\nameGalaxies	&	4	&	4.15E-03	&	2.9E+08	&	1	Gyr	&	2E-05	Gyr	&	1.3E+13	&	3.0E-10	&	3.9E+03		\\
+\nameGalaxies	&	6	&	3.93E-04	&	1.7E+08	&	1	Gyr	&	6E-06	Gyr	&	3.1E+13	&	3.0E-10	&	9.4E+03		\\
+\nameGalaxies	&	9	&	3.93E-05	&	8.8E+07	&	1	Gyr	&	7E-07	Gyr	&	1.3E+14	&	3.0E-10	&	3.9E+04		\\
+\hline																				
+	&		&		&		&			&			&		&	per sim	&	5.4E+04		\\
+	&		&		&		&			&			&		&	SU	&	1.1E+05		\\
+	&		&		&		&			&			&		&	Disk	&	1.1E+04		\\
+\hline																				
+\hline																				
+	&		&		&		&			&			&		&	SU	&	1.64E+05		\\
+	&		&		&		&			&			&		&	Disk	&	1.9E+05		
+\end{tabular}																				
+\end{center}																				
+\end{table}																				

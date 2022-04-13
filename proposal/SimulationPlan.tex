@@ -4,47 +4,99 @@
 Here we will outline the simulations to be performed for each of the projects.
 
 The total cost for one simulation is determined by multiplying the cost for a
-single zone-update by the number of zones and the number of updates.  Thus, $SU
-= \suzu Z U$, where $SU$ is the total cost, $\suzu$ is cost in
-$SU$-per-zone-update, $Z$ is the number of zones, and $U$ is the number of
-updates.
-$\suzu$ is determined by the total
-speed of all of the physics packages employed for each time step, and is
-different for each simulation suite. The choice of physics package was motivated
-in Section \ref{sec.background}, and the measurement of $\suzu$ is presented in
-the Scaling and Performance document.  The estimate of the number of zones, $Z$,
-comes from a combination of the simulation domain and the expected number of
-zones for each level of the simulation.  The number of updates, $U$, is found as
-$U=T/\Delta t$, where the total simulation time is $T$ and the size of the
-timestep is $\Delta t$.  $T$ is determined by the physics
-problem.  For all of our simulations, the size of the time step $\Delta t$ is
-determined by a standard Courant condition, that is a wave cannot cross half of
-one zone in a timestep.  That is, 
+single zone-update by the number of zones and the number of updates:
 \begin{align}
-\Delta t = \eta \frac{\Delta
-x}{v_{\rm{signal}}} \label{eqn.cfl}
+SU = \suzu N_Z N_U,
 \end{align}
-, and $\eta < 0.5$.  We determine $v_{\rm{signal}}$, the
-fastest signal speed, from preliminary studies, use Equation \ref{eqn.cfl} to
+where $SU$ is the total cost, $\suzu$ is cost in
+$SU$-per-zone-update, $N_Z$ is the number of zones, and $N_U$ is the number of
+updates.
+$\suzu$ is determined by the total time for one time step using 64 cores per
+node.  This changes for each suite as the physics packages involved are
+different, and the overhead from the AMR hierarchy is different.  Overhead is
+accounted for in $\suzu$ by performing simulations that use the target physics
+packages and appropriate AMR structures.  More details can be seen in the
+Scaling document.
+
+The choice of physics packages for each suite is motivated
+in Section \ref{sec.background}, and the measurement of $\suzu$ is presented in
+the Scaling and Performance document.  The estimate of the number of zones, $N_Z$,
+is determined by the target resolution for the simulation.  For the fixed
+resolution simulations, this is simply the number of zones.  For the AMR
+simulations, the actual number of zones created is a product of the chaotic
+processes in the system.  For these we use approximate the covering fraction
+with previous simulations.
+The number of updates, $U$, is found as
+$U=T/\Delta T$, where the total simulation time is $T$ and the size of the
+timestep is $\Delta T$.  $T$ is determined by the physics
+problem.  The size of the time step $\Delta T$ is
+determined by a standard Courant condition, that is a wave cannot cross half of
+one zone in a timestep, 
+\begin{align}
+\Delta T = \eta \frac{\Delta
+x}{\vsignal}, \label{eqn.cfl}
+\end{align}
+and $\eta < 0.5$.  We determine $v_{\rm{signal}}=c_s+v_{\rm{max}}$
+ as the sum of the sound speed and the max velocity, from preliminary studies, and then use use Equation \ref{eqn.cfl} to
 determine the number of steps on each level.
-For each suite of simulations, we determine the performance $\suzu$ from
-preliminary studies that closely mirror the simulation structure and physics
-packages.  
 
-\subsection{Simulations: Turbulent Energy}
-\label{subsec.turb_accounting}
-\input{Simulations_Turb}
+Both the \nameTurbulence\ and \nameCMB\ simulations are fixed resolution and
+employ only the random forcing physics package.  The former will use the hydro solver
+PPM, and the later will use our MHD solver, which has a slightly higher cost.  Both will be
+run at $1024^3$.  The total time, $T$, is \red{5} shock-crossing times, so $T =
+5 L/\mach$, where $L$ is the size of the driving pattern.  The
+timestep, $\Delta T$, also decreases with Mach number as Equation \ref{eqn.cfl},
+and is determined measuring the signal speed \vsignal from
+previous fully developed turbulence simulations and rescaling with the Mach
+number.
 
-\subsection{Simulations: Star Formation}
-\label{sec.sims_cores}
-\input{Simulations_Cores}
+The timing for the \nameCores\ and \nameGalaxies\ suite is done in an identical manner, but the
+number of zones $N_Z$ is now dynamically determined by the portion of the flow
+that is turning into stars.  This is a chaotic process, so formally impossible
+to predict
+However, it can be expected to be roughly similar to
+previous simulations, so we estimate the covering fraction from those.   The timestep per level is typically half that of the level
+above, so we estimate the signal speed from previous simulations and estimate
+the timestep for each level with Equation \ref{eqn.cfl}.  Table \ref{table2}
+shows the estimated covering fraction, timestep, and ultimate SU cost for one
+simulation.  
 
-\subsection{Simulations: Galaxies}
-\label{sec.sims_galaxies}
-\input{Simulations_Galaxies}
+The \nameCores\ simulations will have $512^3$ root grid zones and $1024^3$
+particles, as well as 4 levels of AMR.  The refinement will be based on the
+density.  It will use the isothermal MHD solver, the gravity solver, and the
+particle update machinery.  The net cost per zone update for this combination of
+physics solvers and a similar AMR structure to the production simulations is
+discussed in the Scaling document, and seen in the $\suzu$ column of Table
+\ref{table2}.  We will perform three of these simulations.
 
-\subsection{Simulations: Foregrounds}
-\label{sec.sims_cmb}
-\input{Simulations_CMB}
+The \nameGalaxies\ suite will restrict the AMR to the disk of the galaxy, and
+use a tower of refinement of 1/2 the length of the box to separate the outer
+part of the CGM at 1.3 Mpc from the small star forming regions in the disk.  The
+first 5 levels will be static nested AMR levels, the final 4 will be dynamic.
+For each level we approximate that about 10\% coverage of the parent level.
+This is by construction for the first 5, and from experience with similar
+simulations for the final 4.  These simulations will use the MHD solver, the
+gravity solver, the particle machinery for the star particles, heating and
+cooling of the gas, and supernovae feedback.  We have performed a preliminary
+simulation using 5 levels to determine the cost per timestep, \suzu, and
+anticipated signal speed, \vsignal, to determine the timestep size. The results
+can be seen in Table \ref{table2}. 
+
+Table \ref{table2} shows the breakdown of the total request by simulation.  The
+\nameTurbulence\ and \nameCMB\ suites are itemized by Mach number, while the
+\nameCores\ and \nameGalaxies\ suites are itemized by AMR level.  Shown in that
+table is the name; the parameter, either Mach number, level, or Sonic and \alf\
+Mach numbers;  the volume fraction; the number of zones $N_Z$; the total
+simulation time $T$; the timestep size $\Delta T$; the total number of
+zone-updates $N_Z N_U$, the cost per update given the AMR and physics usage; and
+finally the total SU cost.
+
+The disk usage is also estimated from the number of zones, $N_Z$.  Each zone
+stores a number of fields, $N_F$: 5 for \nameTurbulence (density, 3 velocity, and
+energy); 14 for \nameCores\ and
+\nameCMB (density, energy, 3 velocity, 3 magnetic fields, 3 electric fields, 3
+additional magnetic fields, see \citet{Collins10}); 24 for the \nameGalaxies\
+suite (14 for MHD, 10 for additional chemistry fields.)  So the total memory is
+8 bytes for all of $N_Z N_F$ fields.  It is listed in Gb in the table.
 
 \input{table2}

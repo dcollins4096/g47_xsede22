@@ -11,8 +11,15 @@ for line in lines:
     tokens = line.split('\t')
     for T in tokens:
         match = reg.match(T)
+
         if match is not None:
-            TextToUse = "%0.1f\sci{%d}"%(float(match.group(1)),int(match.group(2)))
+            number = match.group(1)
+            if len(number) == 1:
+                number = "%d"%int(match.group(1))
+            else:
+                number = "%0.1f"%float(match.group(1))
+
+            TextToUse = "%s\sci{%d}"%(number,int(match.group(2)))
         else:
             TextToUse = T
 

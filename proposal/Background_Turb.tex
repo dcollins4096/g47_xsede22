@@ -1,11 +1,14 @@
-Here we provide the background for the \nameTurbulence\ project (Section
-\ref{subsec.turb_motivate})
-and briefly motivate the simulations to support this study (Section
-\ref{subsec.turb_sims})  Details of the
-simulation cost can be found in Section \ref{subsec.turb_accounting}.
+Turbulence is ubiquitous in astrophysical processes.  We have developed analytic
+predictions for the distribution of energies in isothermal turbulence, both
+supersonic and subsonic. These simulations will verify our analytic predictions.
+
+We provide the background for the \nameTurbulence\ project in Section
+\ref{subsec.turb_motivate}
+and motivate the simulations to support this study in Section
+\ref{subsec.turb_sims}.
 
 
-\subsubsection{Motivation}
+\subsubsection{Motivation: \nameTurbulence}
 \label{subsec.turb_motivate}
 
 The interstellar medium (ISM) is the gas between stars in the galaxy.  It cools
@@ -15,7 +18,10 @@ causing supersonic turbulence throughout the interstellar medium.  This
 turbulence impacts the formation of stars (see Section \ref{sec.back_cores}) and
 causes a polarized screen that is blocking our view of the light from the big bang (see
 Section \ref{sec.back_foregrounds}), among many other effects
-\citep{Elmegreen04}. It is also interesting in its own right.
+\citep{Elmegreen04}. It is also interesting in its own right.  We have developed
+analytic formulae for the probability density function (PDF) of internal energy
+and kinetic energy, as well as their joint distribution.  In this project we
+will verify these formulae with high resolution simulations.
 
 Supersonic turbulence is compressible, and the distribution of density
 fluctuations is described by a log normal, i.e. the log of density is
@@ -24,36 +30,39 @@ i.e. each of the components is a guassian, and added in quadrature the
 distribution is Maxwellian.  
 We have recently found analytic distributions for the internal energy and
 kinetic energy, as well as their joint
-distribution.   These energy distributions will be useful
-in future studies of turbulence in the ISM.  We have verified these formulae 
-with lower resolution simulations, with excellent but low-resolution agreement.
+distribution.   Kinetic energy is defined in the familiar way, $E_K=\half \rho
+v^2$.  Internal energy is defined as $E_T= c_s^2 \rho \ln \rho/\rho_0$, where
+$c_s$ is the sound speed and $\rho_0$ is the mean density.  The joint
+distribution of these two quantities can be seen in Figure \ref{fig.energy}.
+Each panel shows the joint PDF of $E_K$ and $E_T$;  the color field shows the
+PDF derived from data; the solid lines show logarithmically spaced contours of
+the data; the dashed lines show the theoretical prediction.  The first panel is
+subsonic, with $\mach=0.5$, the middle has $\mach=1$, and the third panel is
+slightly supersonic, with $\mach=2$.  Significant changes in the behavior of the
+distribution, with high $K_E$ gas developing along side high $E_T$ gas, are both
+predicted by the analytical dashed lines and seen in the data.
+
+These energy distributions will be useful
+in future studies of turbulence in the ISM, as the energetics of the gas
+determine, e.g., what can collapse to form stars.  
+
 Now we wish to verify the formulae with higher resolution simulations, and to
 explore if the small deviations from lognormal density and Maxwellian velocity
 that were seen in our preliminary runs are numerical, or something more
-interersting such as non-local transfer in the turbulent cascade.
+interesting such as non-local transfer in the turbulent cascade.
 
-Our analytic formulae predict, and the simulations reproduce, interesting
-changes in internal energy as the Mach, \mach, number is increased.
-The Mach number, \mach, is the r.m.s velocity relative to the speed
-of sound, and it dictates how compressible the flow is.  We find that as \mach\
-is increases, a step forms at $E_T = 0$, which is reproduced by simulations.
-
-
-We will perform a series of simulations increasing the r.m.s. 
-\begin{figure} \begin{center}
-\includegraphics[width=0.32\textwidth]{figs/mach5_contours_comparison_V_MCMC.png}
-\includegraphics[width=0.32\textwidth]{figs/mach10_contours_comparison_V_MCMC.png}
-\includegraphics[width=0.32\textwidth]{figs/mach20_contours_comparison_V_MCMC.png}
-\caption[ ]{The joint distribution between thermal energy, $E_T$, and kinetic
-energy $E_K$. Color shows the PDF computed from low resolution simulations, and ranges between 0 (purple) and 1
-(red).  The thermal energy develops a low $E_T$ wall as well as a high $E_T$
-wing as the Mach number increases.  We will improve the noise and accuracy of
-these fits.}
-\label{} \end{center} \end{figure}
-
-\subsubsection{Simulations}
+\subsubsection{Simulations: \nameTurbulence}
 \label{subsec.turb_sims}
 
-Our simulations will begin with uniform density, and \red{magic paddles}
-
-\red{We will perform $1024^3$  simulations because it should be a lot better}
+Our preliminary simulations were run with a modest resolution of $256^3$.  This
+is enough to find reasonable agreement, but imperfect. This can be seen most
+easily in the first panel of Figure \ref{fig.energy}, by examining the center
+most (red) contours. The solid line shows simulation, while the dashed line
+shows theory, which clearly agrees, but only approximately.  This lack of
+agreement can be one of several things, the first to examine is numerical
+resolution.  With insufficient resolution, energy is transferred from large to
+small scales faster than would be natural, which could be why we have mediocre
+agreement in our predicted theory.  The proposed simulations will quadruple this
+resolution to $1024^3$.  Owing to the substantial evolution with Mach number, we
+will run some subsonic cases (\mach=0.5, 1.0) and some moderate and highly
+supersonic cases (\mach=2,4,7).  

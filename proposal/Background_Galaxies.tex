@@ -1,20 +1,22 @@
-\begin{figure} \begin{center}
-\includegraphics[width=\textwidth]{figs/2015_353GHz_B-field.png}
-\caption[ ]{The large scale magnetic field of the galaxy as seen by the Planck
-satellite. The color field shows dust emission at 353GHz.  The image is smeared
-along the direction of the magnetic field.  \citep{PlanckXIX15}}
-\label{fig.PlanckField} \end{center} \end{figure}
+The galactic magnetic field can be seen in Figure \ref{fig.planck}.  This figure
+is an all-sky projection of dust in the galaxy, seen at 353 GHz by the Planck
+satellite, smeared along the direction of
+the magnetic field.  Our goal in the \nameGalaxies\ project is to understand the
+origin of this magnetic field.  We will discuss the background in Section
+\ref{subsec.galaxies_motivate}, and describe the simulations we will perform in
+Section \ref{subsec.galaxies_sims}
 
-The \nameGalaxies\ project will simulate magnetic field generation in Milky Way
-sized galaxies.  It is well know that the Milky Way has a large scale magnetic
-field of roughly $\sim 6 \mu$G.  For reference, 1G is about the strength of a refrigerator
-magnet.  The Galactic magnetic field can be seen in Figure \ref{fig.PlanckField}, which shows dust
-emission at 353 GHz. The map is smoothed in the direction of the magnetic field,
-showing large scale looping structures and small scale turbulent structures.
+\subsection{Motivation: \nameGalaxies}
+\label{subsec.galaxies_motivate}
+
+It is well know that the Milky Way has a large scale magnetic
+field of roughly $\sim 5 \mu$G, about 200,000 time weaker than a refrigerator
+magnet, but spanning the entire galaxy.   
 
 The origin of this magnetic field is an open question.  There are presently two
 known \emph{dynamos}, that is mechanisms to amplify magnetic fields. They differ in
-two ways; the length scales over which they act, and the time scales.  The fast
+two ways; the length scales over which they act, and the time scales over which
+they act.  The fast
 dynamo converts turbulent kinetic energy to magnetic energy at small scales, and
 produces disordered fields quickly.  The slow dynamo produces large scale fields
 slowly, with large scale convective motions. The magnetic field in the Milky Way, as well as other similar galaxies,
@@ -22,20 +24,45 @@ shows large scale order, but based on observations of galaxies, must have been
 built up quickly. 
 
 The magnetic field in the Galaxy is largely in one direction, losely following
-the spiral arms.  On the way to producing a large scale magnetic field, both mechanism produce a
+the spiral arms.  On the way to producing a large scale magnetic field, both
+dynamo mechanisms produce a
 substantial amount of field in all directions.  Thus to have a field of mostly
-one sign, the other sign must be expelled from the galaxy.  
+one direction, the other directions must be expelled from the galaxy.
+(Selectively eliminating one component of magnetic field is not possible at
+these scales.)
 Thus the buoyancy of the gas as
 it leaves the face of the disk is important in setting the rate of growth of
 the mean field.  Like many problems in physics, the answer depends sensitively
-on boundary conditions, which in this case are poorly conscribed.
+on boundary conditions.
 
-The circum-galactic medium (CGM) is the gas that's outside the galaxy, but still
+The circum-galactic medium (CGM) is the gas that's outside disk the galaxy, but still
 bound to it.  It is extremely hot (millions of Kelvin) and extremely low density
-(0.1 $cm^{-3}$) and thus unfortunately difficult to constrain.
+(0.1 $cm^{-3}$) and thus unfortunately difficult to observe.
 The purpose of this project is to examine the growth of magnetic fields in Milky
 Way sized galaxies.  
 Specifically, to examine the impact of the circum-galactic
 medium (CGM) properties on the dynamo. We expect that an ordered field within
 the disk requires a buoyant CGM, that is gas that is expelled from the galaxy by
-supernovae continues to rise, rather than falling back down immediately.  ``
+supernovae continues to rise, rather than falling back down immediately.  
+
+\subsection{Simulations: \nameGalaxies}
+\label{subsec.galaxies_sims}
+
+Our proposed simulations will begin at very large scale, $1.3$ Mpc.  This is to
+separate the boundary from the region of interest, and to give the CGM a large
+enough volume to expand.  We will resolve a nest of refinement grids, each one
+1/2 of its parent grid on a side, giving constant number of zones per level.
+This will be done for 5 levels.  We will allow the simulation to 
+refine for a further 4 levels, based on the local density of the gas.  Nine
+levels then gives us 10pc of resolution on the finest
+level, so we will resolve molecular clouds by a few zones.  We will have ample
+resolution in the disk to study the dynamo action as it occurs, and sufficient
+resolution in the CGM to serve as an appropriate boundary.  As we are simulating
+the entire galaxy, we can no longer use an idealized isothermal equation of
+state, but will use ISM heating and cooling functions by way of the
+\red{grackle}.  We will perform four such simulations with a variety of models
+for the CGM.  One simulation will have a buoyant CGM, one will not, and the
+other two are developmental simulations for defining code parameters.
+
+These simulations will perform double duty, and also be used for the \nameCMB\
+project.

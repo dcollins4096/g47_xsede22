@@ -1,0 +1,10 @@
+#!/bin/tcsh
+
+if ( -e ~/Downloads/G47\ request\ -\ Table2.tsv ) then
+    mv ~/Downloads/G47\ request\ -\ Table2.tsv ./table2.tsv
+endif
+
+sed -n 's,.*\(E+\(..\).*,\\sci{\1},p' table2.tsv #> table2_tmp.txt
+
+
+#end

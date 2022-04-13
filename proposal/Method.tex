@@ -1,12 +1,25 @@
 \section{Computational Method}
 \label{sec.method}
 
-We will use Enzo.
+For the proposed simulations, we will use Enzo \citep{Collins10, Bryan14}.  Enzo
+is an adaptive mesh refinement (AMR) code, which dynamically adds resolution
+elements as the simulation evolves.  Hydrodynamics is solved on an Eulerian grid
+using finite volume techniques.  Specifically, for hydrodynamics we use the
+piecewise parabolic method \citep{Colella84}, and we use a piecewise linear
+method for MHD \citep{Li08}.  The AMR uses the scheme of \citet{Berger84}, and
+the MHD uses the scheme of \citet{Balsara01}.  Gravity is solved with fast
+Fourier transforms on the root grid, and multi-grid relaxation on the sub-grid
+patches \citep{Bryan14}.  
 
-SF: Enzo + Particles
+The \nameTurbulence, \nameCores, and  \nameCMB\ simulations use an isothermal
+equation of state.  Heating and cooling for the \nameGalaxies\ simulations will
+be handled with \red{grackle}, which is a more complicated system and cannot be
+treated as isothermal.
 
-Galxies: Chemistry and SF and all that stuff
+Turbulent driving in the \nameTurbulence\ and \nameCMB\ simulations will be
+produced
+using an \red{OU get the ref}.
 
-CMB: Enzo  + MHD 
 
-Turb: Enzo + PPM
+
+

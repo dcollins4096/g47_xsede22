@@ -1,6 +1,16 @@
-The cosmic microwave background (CMB) is the remnant radiation leftover from
-thee Big Bang.  It is extremely uniform on the sky, a perfect black body with a
-temperature of 2.7K.  Its study, through satellites such as Planck, closed many open
+The cosmic microwave background (CMB) is the light leftover from the creation of
+the universe.  It has taught us a considerable amount about the structure of the
+universe.  To learn more from it, we must understand its polarization.  To see
+the polarization of the CMB, we must first understand the polarization of the
+interstellar medium (ISM), which is much brighter and in the way.  We will
+motivate this project in Section \ref{subsec.cmb_motivate}, and describe the
+simulations we will perform in Section \ref{subsec.cmb_sims}
+
+\subsection{Motivation: \nameCMB}
+\label{subsec.cmb_motivate}
+
+The CMB is extremely uniform on the sky, a perfect black body with a
+temperature of 2.7K. Study of the $\sim \mu$K fluctuations in this temperature, through satellites such as Planck, closed many open
 questions about the nature of the universe, such as it's energy content and
 eventual fate.  But it still has open questions.
 
@@ -12,7 +22,8 @@ temperature fluctuations.  As the universe expands, it cools.  About 400,000
 years after the beginning of time, the universe had cooled enough for the electrons and
 protons to meet and combine, rather than just scattering off one another.  In a
 very short period of time, the universe all became neutral, and photons could
-travel great distances instead of bouncing off a nearby electron.  
+travel great distances instead of bouncing off a nearby electron.  These photons
+are the CMB.
 
 The fluctuations in the temperature are small, about a millionth of a Kelvin,
 but have allowed us to measure many factors of the universe.  Chief among them
@@ -33,12 +44,12 @@ waves, being quadrupolar in nature, imprint a polarization on the CMB. To detect
 this polarization is to witness the violent birth of the Universe.
 
 Unfortunately (and also fortunately, but for different reasons) the Galaxy we live in is filled with dust.
-This dust, which includes iron and magnesium, lines up perpandicular to the magnetic
+This dust, which includes iron and magnesium, lines up perpendicular to the magnetic
 field in the galaxy, not unlike iron filings around a bar magnet.  These dust
 grains radiate polarized thermal radiation in the microwave and infrared.  This
 polarized signal is much brighter than the polarization in the CMB, so must be
 removed.  In order to remove it, we must understand the statistical properties
-of the interstellar medium (ISM).  
+of the ISM.
 
 The Planck satellite \red{ref} measured the polarized sky, and the result can be
 seen in Figure \red{PLANCK}.  Statistically, the polarization is described best
@@ -49,7 +60,9 @@ distributed over all scales in a power-law fashion, with $E \propto k^{-2.35}$,
 where $k$ is wavenumber on the sky. $B$ has a similar exponent but half the
 amplitude.  
 
-Our group has had success in reproducing similar behavior in a few settings, 
+\red{still kind of ratty.}
+
+Our group has had success in reproducing similar behavior in a few settings,.
 In \red{Stalpes} we demonstrated that MHD turbulence can reproduce
 similar exponents, with the value of the exponent and amplitude depending on
 velocity and magnetic field strength in the turbulence.  In
@@ -64,3 +77,24 @@ time with magnetic fields.  We will then use the filament finding tool DISPERSE
 The study of the ISM is very rich.  We are embarking of two lines of study.  The
 first uses the galaxies of the \nameGalaxies\ project.  We will use the galaxies
 of that suite of study to constrain the available polarization signals 
+
+
+\subsection{Simulations: \nameCMB}
+\label{subsec.cmb_sims}
+
+Our previous simulations have indicated that, as far as the foregrounds are
+conserned, the ISM is most likely supersonic and \sa.  The primary parameters
+that dictate the behavior of the turbulence is the sonice Mach number, \mach,
+and the \alf Mach number, \alfmach.  These are the ratio of the r.m.s fluid
+speed to the sonic speed and \alf\ speed, respectively.  The \alf\ speed is the
+speed a disturbance travels along a magnetic field in a plasma.  As the
+charachter of the turbulence changes as both \mach\ and \alfmach\ are increased,
+we will perform a minimal 4 step parameter search, with \mach and \alfmach equal
+to 1 and 5.  Thus, (\mach, \alfmach) = (1,1), (1,5), (5,1) and (5,5) alternately
+varying large and small field and velocity.  These will use the MHD and driving
+modules in Enzo.  We will increase the resolution beyond that of our preliminary
+runs, to $1024^3$.  We will drive the turbulence for 5 dynamical times, where a
+dynamical time is the time for a typical driving pattern to cross the box.  As
+the driving pattern is 1/2 the box, $T_{dyn}=0.5/\mach$.  Driving for a number
+of dynamical times is important to develop statistically relaxed turbulence, as
+well as providing statistics for averaging.  
