@@ -1,6 +1,9 @@
 #!/bin/tcsh
 mv ~/Downloads/G47\ request\ -\ Table2.tsv ./table2.tsv
-table2.py
-more table2.tex
-pdflatex ms
+mv ~/Downloads/G47\ request\ -\ Table1.tsv ./table1.tsv
+table2.py table2.tsv
+mv tableX.tex table2.tex
+table2.py table1.tsv
+mv tableX.tex table1.tex
+#pdflatex ms
 #end

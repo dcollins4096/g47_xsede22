@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-
+import sys
 import re
-fptr = open('table2.tsv','r')
+fptr = open(sys.argv[1],'r')
 lines = fptr.readlines()
 fptr.close()
 tab_spacer = "%8s"
@@ -27,7 +27,7 @@ for line in lines:
 
 
 
-gptr=open('table2.tex','w')
+gptr=open('tableX.tex','w')
 gptr.write(output)
 gptr.close()
 #end
