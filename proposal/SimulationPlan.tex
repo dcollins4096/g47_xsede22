@@ -1,9 +1,38 @@
 \section{Simulation Plan}
+\label{sec.plan}
 
 Here we will outline the simulations to be performed for each of the projects.
 
+The total cost for one simulation is determined by multiplying the cost for a
+single zone-update by the number of zones and the number of updates.  Thus, $SU
+= \suzu Z U$, where $SU$ is the total cost, $\suzu$ is cost in
+$SU$-per-zone-update, $Z$ is the number of zones, and $U$ is the number of
+updates.
+$\suzu$ is determined by the total
+speed of all of the physics packages employed for each time step, and is
+different for each simulation suite. The choice of physics package was motivated
+in Section \ref{sec.background}, and the measurement of $\suzu$ is presented in
+the Scaling and Performance document.  The estimate of the number of zones, $Z$,
+comes from a combination of the simulation domain and the expected number of
+zones for each level of the simulation.  The number of updates, $U$, is found as
+$U=T/\Delta t$, where the total simulation time is $T$ and the size of the
+timestep is $\Delta t$.  $T$ is determined by the physics
+problem.  For all of our simulations, the size of the time step $\Delta t$ is
+determined by a standard Courant condition, that is a wave cannot cross half of
+one zone in a timestep.  That is, 
+\begin{align}
+\Delta t = \eta \frac{\Delta
+x}{v_{\rm{signal}}} \label{eqn.cfl}
+\end{align}
+, and $\eta < 0.5$.  We determine $v_{\rm{signal}}$, the
+fastest signal speed, from preliminary studies, use Equation \ref{eqn.cfl} to
+determine the number of steps on each level.
+For each suite of simulations, we determine the performance $\suzu$ from
+preliminary studies that closely mirror the simulation structure and physics
+packages.  
+
 \subsection{Simulations: Turbulent Energy}
-\label{sec.sims_turb}
+\label{subsec.turb_accounting}
 \input{Simulations_Turb}
 
 \subsection{Simulations: Star Formation}
@@ -17,3 +46,5 @@ Here we will outline the simulations to be performed for each of the projects.
 \subsection{Simulations: Foregrounds}
 \label{sec.sims_cmb}
 \input{Simulations_CMB}
+
+\input{table2}
