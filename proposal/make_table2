@@ -1,0 +1,6 @@
+#!/bin/tcsh
+mv ~/Downloads/G47\ request\ -\ Table2.tsv ./table2.tsv
+table2.py
+more table2.tex
+pdflatex ms
+#end
