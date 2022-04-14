@@ -1,10 +1,11 @@
 Turbulence is ubiquitous in astrophysical processes.  We have developed analytic
 predictions for the distribution of energies in isothermal turbulence, both
-supersonic and subsonic. These simulations will verify our analytic predictions.
-
+supersonic and subsonic. These simulations will verify our analytic predictions,
+and examine if deviations seen in preliminary studies are due to lack of
+resolution or interesting physics.
 We provide the background for the \nameTurbulence\ project in Section
-\ref{subsec.turb_motivate}
-and motivate the simulations to support this study in Section
+\ref{subsec.turb_motivate},
+and motivate the simulations that support this study in Section
 \ref{subsec.turb_sims}.
 
 
@@ -26,14 +27,15 @@ will verify these formulae with high resolution simulations.
 Supersonic turbulence is compressible, and the distribution of density
 fluctuations is described by a log normal, i.e. the log of density is
 distributed as a gaussian.  The distribution of velocity is roughly Maxwellian,
-i.e. each of the components is a guassian, and added in quadrature the
+i.e. each of the three velocity components is a guassian, and added in quadrature the
 distribution is Maxwellian.  
 We have recently found analytic distributions for the internal energy and
 kinetic energy, as well as their joint
 distribution.   Kinetic energy is defined in the familiar way, $E_K=\half \rho
 v^2$.  Internal energy is defined as $E_T= c_s^2 \rho \ln \rho/\rho_0$, where
 $c_s$ is the sound speed and $\rho_0$ is the mean density.  The joint
-distribution of these two quantities can be seen in Figure \ref{fig.energy}.
+distribution of these two quantities can be seen in Figure \ref{fig.energy},
+along with our analytic prediction (dotted lines).
 Each panel shows the joint PDF of $E_K$ and $E_T$;  the color field shows the
 PDF derived from data; the solid lines show logarithmically spaced contours of
 the data; the dashed lines show the theoretical prediction.  The first panel is
@@ -45,11 +47,6 @@ predicted by the analytical dashed lines and seen in the data.
 These energy distributions will be useful
 in future studies of turbulence in the ISM, as the energetics of the gas
 determine, e.g., what can collapse to form stars.  
-
-Now we wish to verify the formulae with higher resolution simulations, and to
-explore if the small deviations from lognormal density and Maxwellian velocity
-that were seen in our preliminary runs are numerical, or something more
-interesting such as non-local transfer in the turbulent cascade.
 
 \subsubsection{Simulations: \nameTurbulence}
 \label{subsec.turb_sims}
@@ -65,4 +62,5 @@ small scales faster than would be natural, which could be why we have mediocre
 agreement in our predicted theory.  The proposed simulations will quadruple this
 resolution to $1024^3$.  Owing to the substantial evolution with Mach number, we
 will run some subsonic cases (\mach=0.5, 1.0) and some moderate and highly
-supersonic cases (\mach=2,4,7).  
+supersonic cases (\mach=2,4,7).  The driving is done with the \red{OU get
+citation}

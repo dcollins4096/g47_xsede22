@@ -1,30 +1,31 @@
 
-The formation of stars is filled with filamentary, fractal structure.  The
+The formation of stars is filled with filamentary, fractal structures.  The
 \nameCores\ project will study the behavior of collapsing gas as it transitions
 from fractal structures to form dense prestellar cores.  We will motivate the
-simulation in Section \ref{subsec.cores_motivate} and describe the simulations
+study in Section \ref{subsec.cores_motivate}, and describe the simulations
 in \ref{subsec.cores_sims}.
 
 
 \subsubsection{Motivation: \nameCores}
 \label{subsec.cores_motivate}
 The formation of stars is one of the most important processes in astrophysics,
-as stars provide most of the light we see in the night sky, and they produce the metal and energy
-that dictates the structure and composition of a galaxy.  It is also poorly
-understood, as it is driven by primarily the chaotic dynamics of the turbulent
-interstellar medium (ISM).   A \emph{prestellar core} is a knot of dense gas
+as stars provide most of the light we see in the night sky, and they produce the
+energy and metal
+that dictates the structure and composition of a galaxy.  
+A \emph{prestellar core} is a knot of dense gas
 formed by gravity in a molecular cloud, which will ultimately form a star.  The
 formation of these cores is one of the more difficult puzzles in star formation,
 as it is fundamentally dictated by chaotic dynamics of the turbulence in the
 cloud.  This is the focus of the \nameCores\ project.
 
-One of our previous studies examined the collapse of a molecular cloud by
+One of our previous studies (Collins et al 2022, in prep) examined the collapse of a molecular cloud by
 including semi-Lagrangian tracer particles that follow the flow.  The particles
-that are found in dense cores are then used to run the simulation "backwards",
+that are found in dense cores at the end of the simulation are then followed
+backwards in time to 
 to examine the \emph{preimage} of the gas, before it collapses.  This will allow
-us to better constrain star formation models.  (Collins et al 2022, in prep)
+us to better constrain star formation models.  
 
-One of the curios findings is the fractal nature of the preimage gas.  We find
+One of the curious findings is the fractal nature of the preimage gas.  We find
 that gas from distinct cores at the end of the simulation begins life mixed with
 one another in a fractal manner. This can be seen in Figure
 \ref{fig.cores}, which shows the the overlap of a collection of preimages at the
@@ -46,7 +47,7 @@ to explore if these structures are in fact fractal, or a result of low
 resolution. The target simulations will have $512^3$ root grid and 4 levels of
 AMR, and $1024^3$ particles.  This is an increase of 4 in linear scale for the
 gas, and 16 for the particles over the results shown in Figure \ref{fig.cores}.
-The proposed suite of three simulations will mirror the preliminary in magnetic
-field strength.  
+The proposed suite of three simulations will mirror the magnetic field strengths
+of the preliminary studies.
 
 

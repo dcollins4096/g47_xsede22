@@ -1,0 +1,86 @@
+%\documentclass[11pt]{article}  % for e-submission to ApJ
+\documentclass[11pt]{NSF}  % for e-submission to ApJ
+
+
+\usepackage{graphicx, natbib, color, bm, amsmath, epsfig}
+\usepackage{wrapfig}
+\input{aas_papers.tex}
+\input{commands.tex}
+\input{names}
+\citestyle{aa}  % correct formatting for ApJ style files
+
+\usepackage{aas_macros}
+\begin{document}
+
+\begin{centering}
+\begin{LARGE}
+%  Scaling Information for 
+    Three Projects in Astrophysical Magnetohydrodynamics
+\end{LARGE}
+
+
+\vspace{2mm}
+{\bf PI: David C. Collins} (Florida State University)
+
+\end{centering}
+\pagestyle{plain}
+
+%\red{TO DO}
+%`` Note that the proposal appears hastily put together, with typographical
+%errors throughout.''
+%
+%``The authors neglected to provide specific information on how the runs would be
+%setup. This must be included in future proposals or they may be rejected.''
+%
+%`` However, the most important information is missing (or at least I could not
+%find it): How many cores will be used during the proposed calculations? Without
+%this information the scaling plot is not very useful, and particularly the
+%'effective use of resources' cannot be judged properly. ''
+%
+%``For now I recommend to award 50\% of the request, which will allow the group to
+%start with the parameter study. Scarce resources will also encourage the group
+%to prune the parameter list after initial results roll in. ''
+
+%\textbf{The Documents}
+%\begin{enumerate}
+%    \item Main Justification
+%    \item CV
+%    \item Progress
+%    \item Perf and Scaling
+%    \item ADD publications
+%    \item ADD grants
+%    \item ADD SU Request
+%\end{enumerate}
+%\textbf{The Tasks}
+%\begin{enumerate}
+%    \item Get some spherical WD test case running on Stampede2.
+%    \item Get a cloudy test running on Stampede2
+%    \item Set up a scaling test for WD
+%    \item set up a scaling test for Cloudy
+%    \item Put together Computational Research Plan.
+%    \item Put together scaling study
+%\end{enumerate}
+%\input{abstract}       %dcc 2020 do me
+\input{introduction}    %dcc 2020 do me
+\input{Research}        %dcc 2020 do me
+\input{Method}          %dcc 2020 do me
+\input{SimulationPlan}  %dcc 2020 do me
+\input{OtherResources}  %dcc 2020 do me
+\input{Personnel}       %dcc 2020 do me 
+
+%%\input{Scaling}  %dcc 2019 help
+%%\input{SUs} %edit beginSU.tex, which has the timing table.  %dcc 2019 help
+%%\input{PriorWork}  %dcc 2019 help
+%%\input{OtherStuff}  %dcc 2019 help
+
+%\appendix
+%\include{ appendix file}
+
+
+\bibliographystyle{apj}
+\bibliography{apj-jour,ms}  % looks in ms.bib for bibliography info
+%\bibliography{apj-jour,ms}  % looks in ms.bib for bibliography info
+
+\end{document}  
+
+
