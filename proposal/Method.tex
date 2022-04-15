@@ -6,19 +6,16 @@ is an adaptive mesh refinement (AMR) code, which dynamically adds resolution
 elements as the simulation evolves.  (Magneto)ydrodynamics is solved on an Eulerian grid
 using finite volume techniques.  Specifically, for hydrodynamics we use the
 piecewise parabolic method \citep{Colella84}, and we use a piecewise linear
-method for MHD \citep{Li08}.  The AMR uses the scheme of \citet{Berger84}, and
+method for MHD \citep{Li08a}.  The AMR uses the scheme of \citet{Berger89}, and
 the MHD uses the scheme of \citet{Balsara01}.  Gravity is solved with fast
 Fourier transforms on the root grid, and multi-grid relaxation on the sub-grid
 patches \citep{Bryan14}.  
-
 The \nameTurbulence, \nameCores, and  \nameCMB\ simulations use an isothermal
 equation of state.  Heating and cooling for the \nameGalaxies\ simulations will
-be handled with \red{grackle}, which is a more complicated system and cannot be
-treated as isothermal.
-
+be handled with the package Grackle \citep{Smith17}.
 Turbulent driving in the \nameTurbulence\ and \nameCMB\ simulations will be
-produced
-using an \red{OU get the ref}.
+done by adding a large-scale random velocity field at every time step, with the
+velocity field evolving using an Ornstein-Uhlenbeck process \citep{Schmidt09}.
 
 
 

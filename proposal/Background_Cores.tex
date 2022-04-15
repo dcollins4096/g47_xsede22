@@ -1,5 +1,6 @@
 
-The formation of stars is filled with filamentary, fractal structures.  The
+The formation of stars is filled with filamentary, fractal structures
+\citep{Andre14}.  The
 \nameCores\ project will study the behavior of collapsing gas as it transitions
 from fractal structures to form dense prestellar cores.  We will motivate the
 study in Section \ref{subsec.cores_motivate}, and describe the simulations
@@ -39,15 +40,21 @@ last panel shows the un-mixing of the gas as it collapses in time.
 \label{subsec.cores_sims}
 
 The simulation presented in Figure \ref{fig.cores} was one of a suite of three
-simulations with varied magnetic field strength.  These simulations were
+simulations with varied magnetic field strength.  We began with fully developed
+turbulence, and then added tracer particles and turned on gravity and AMR.  These simulations were
 relatively low resolution as we developed the analysis techniques and learned
 about extended nature of the primage gas.
-Our proposed simulations will greatly improve the resolution of our simulations,
+Our proposed simulations will greatly improve the resolution
 to explore if these structures are in fact fractal, or a result of low
-resolution. The target simulations will have $512^3$ root grid and 4 levels of
+resolution. The size of the box is 5 pc, and the r.m.s. Mach number is 9.  They
+will begin from existing simulation data.  The target simulations will have $512^3$ root grid and 4 levels of
 AMR, and $1024^3$ particles.  This is an increase of 4 in linear scale for the
 gas, and 16 for the particles over the results shown in Figure \ref{fig.cores}.
 The proposed suite of three simulations will mirror the magnetic field strengths
-of the preliminary studies.
-
+of the preliminary studies.  The simulations will be similar to those presented
+in \citep{Collins12}, but with tracer particles and sinks.
+It will run for a total of one free-fall tiem, where $t_{ff}=(G
+\rho)^{-1/2}=1$Myr.  Here
+$G$ is the gravitational constant, and $\rho$ is the mean density of the box.
+These simulations will utilize isothermal MHD, gravity, and particle solvers.
 

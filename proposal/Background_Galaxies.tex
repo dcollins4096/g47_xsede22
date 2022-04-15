@@ -6,7 +6,7 @@ origin of this magnetic field.   We will We will discuss the background in Secti
 \ref{subsec.galaxies_motivate}, and describe the simulations we will perform in
 Section \ref{subsec.galaxies_sims}
 
-\subsection{Motivation: \nameGalaxies}
+\subsubsection{Motivation: \nameGalaxies}
 \label{subsec.galaxies_motivate}
 
 The Milky Way has a large scale magnetic
@@ -45,13 +45,14 @@ medium (CGM) properties on the dynamo. We expect that an ordered field within
 the disk requires a buoyant CGM, so that gas that is expelled from the galaxy by
 supernovae continues to rise, rather than falling back down immediately.  
 
-\subsection{Simulations: \nameGalaxies}
+\subsubsection{Simulations: \nameGalaxies}
 \label{subsec.galaxies_sims}
 
 The disk of our simulated galaxies will be 500pc thick and 25kpc in radius.  Our
 proposed simulation domain will begin at very large scale, $1.3$ Mpc.  This is to
 separate the boundary from the region of interest, and to give the CGM a large
-enough volume to expand.  We will resolve a nest of refinement grids, each one
+enough volume to expand.  This will begin at $256^3$, much smaller than the
+other simulations, but this suite of galaxy simulations has much deeper AMR.  We will resolve a nest of refinement grids, each one
 1/2 of its parent grid on a side, giving constant number of zones per level.
 This will be done for 5 levels.  We will allow the simulation to 
 refine for a further 4 levels, based on the local density of the gas.  Nine
@@ -61,9 +62,10 @@ resolution in the disk to study the dynamo action as it occurs, and sufficient
 resolution in the CGM to serve as an appropriate boundary.  As we are simulating
 the entire galaxy, we can no longer use an idealized isothermal equation of
 state as the other simulations do, but will use ISM heating and cooling functions by way of the
-\red{grackle}.  We will perform four such simulations with a variety of models
+tabulated look up using Grackle \citep{Smith17}.  We will perform four such simulations with a variety of models
 for the CGM.  One simulation will have a buoyant CGM, one will not, and the
 other two are developmental simulations for defining simulation parameters.
+Simulations will last for 1Gyr, several orbital timescales for the galaxy.  
 
 These simulations will also be useful in conjunction with the \nameCMB\ project.
 The two approaches compliment each other, as the \nameCMB\ simulations will

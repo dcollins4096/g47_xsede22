@@ -1,14 +1,14 @@
-\def\SUtotal{	1.6E+05	}							
-\begin{table} \begin{center} \input{table1_caption} \label{table2}									
+\def\SUtotal{	2.9E+05	}							
+\begin{table} \begin{center} \input{table1_caption} \label{table1}									
 \begin{tabular}{l		r		r		r		r	}
 Name	&	Node Hours	&	Disk	&	Physics 	&	AMR	\\
 \hline									
-Turbulence	&	1.8E+04	&	5.6E+03	&	Hydro + Driving	&	None	\\
-Cores	&	1.2E+04	&	1.6E+05	&	MHD + Gravity + Particles	&	4 levels, all space	\\
+Turbulence	&	4.5E+04	&	5.6E+03	&	Hydro + Driving	&	None	\\
+Cores	&	1.1E+03	&	2.0E+04	&	MHD + Gravity + Particles	&	4 levels, all space	\\
 CMB	&	2.6E+04	&	1.7E+04	&	MHD + Driving	&	None	\\
-Galaxies	&	1.1E+05	&	1.1E+04	&	MHD + Gravity + Cooling	&	8 level nest	\\
+Galaxies	&	2.2E+05	&	2.2E+04	&	MHD + Gravity + Cooling	&	8 level nest	\\
 \hline									
-	&	1.6E+05	&	1.9E+05	&		&		\\
+	&	2.9E+05	&	6.4E+04	&		&		\\
 \end{tabular}									
 \end{center}									
 \end{table}									

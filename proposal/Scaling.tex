@@ -30,15 +30,15 @@ David Collins, PI
 
 
 In order to quantify the performance and scaling, and to select the number of
-nodes to use for our jobs, we perform weak scaling studies for each of our four
-simulations.  For each suite of simulations, we perform a strong scaling study
+nodes to use for our jobs, we perform strong scaling studies for each of our four
+projects.  For each suite, a fiducial simulation is performed
 that targets the physics packages, root grid size, particle
 count, and approximates the unpredictable adaptive mesh refinement (AMR)
 structure of the production simulations.  
 We perform a single time step on
-the root grid, which takes many time steps on the subgrids. Also included in our
-estimation are reading and writing the data and initialization.  The simulations
-are run on a variety of node counts, depending on the package.
+the root grid, which takes many time steps on the subgrids. 
+That time step is then repeated several times with an increasing number of
+nodes.
 
 The results can be seen in Figure \ref{fig.scaling}. Shown in the figure is \suzu, the number of
 service units for the update of one cell, assuming 64 cores per node.  Each of
@@ -48,37 +48,46 @@ structure, which changes the overhead.  We discuss each suite below.
 
 The quantity $\mu= core-hours/zone-update$, given perfect scaling, is
 independent of the problem size and number of cores used.  It depends only on the
-combination physics solvers.  $\suzu=\frac{\mu}{Nc/Nn}$ is then the cost per
-zone-update, and the total cost $SU=\suzu Z U$, where $Z$ is the total number of
-zones, and $U$ is the total number of updates.  $\suzu$\ also depends on the
-number of cores per node.  For all runs we use 64 cores per node.  Given perfect scaling, $SU$ is independent of
-processor count.  Our scaling is imperfect, and the optimal node number is
-selected from  the Figure. 
+combination physics solvers.  The cost per zone-update is
+$\suzu=\frac{\mu}{N_C/N_N}$, and the total cost $SU=\suzu N_Z N_U$, where $N_Z$ is the total number of
+zones, and $N_U$ is the total number of updates.  $\suzu$\ also depends on the
+number of cores per node, $N_C/N_N$, and all runs we use 64 cores per node.
+Given perfect scaling, $\suzu$ is independent of
+processor count.  However, our scaling is imperfect, and the optimal node number is
+selected from  Figure \ref{fig.scaling}.
 
-The \red{blue} line shows a set of fiducial simulations that use only the
+The \red{blue} line shows a set of 
+fiducial simulations that use only the
 relevant hydro solvers and gravity.  The hydro (or MHD) solver and gravity
 solver are the most expensive part of the code, so we present their timing alone
 as a baseline.
 The simulations use either Piecewise
-Parabolic Method \citep{Woodward84} for the pure hydro turbulence simulations,
-or the second order MHD scheme of \citep{Li08} for the other three.  The points
+Parabolic Method \citep{Colella84} for the pure hydro turbulence simulations,
+or the second order MHD scheme of \citep{Li08a} for the other three.  The points
 in the blue line are, bottom to top, PPM, MHD, PPM+Gravity, MHD+Gravity.  
 
 The \red{orange} line shows the scaling for the fiducial \nameTurbulence\
-simulations.  These simulations will only use PPM and the driving module.  The
+simulations.  These simulations will only use PPM and the turbulent driving
+module, so only slightly more expensive than the baseline.  The
 fiducial simulation is, as the production simulations will be, $1024^3$ root
 grid with no AMR.
- We run on 4, 8, 16, and 32 nodes, 64 cores per node.  The result is
-$\suzu=2\sci{-11}$ on 4 cores, and $4\sci{-11}$ for 32 nodes.  We will run on 32
+ We run on 4, 8, 16, and 32 nodes, using 64 cores per node.  The result is
+$\suzu=2\sci{-11}$ on 4 cores, and $4\sci{-11}$ for 32 nodes.  Production runs
+will run on 32
 nodes, as the small increase in cost will be offset by the much shorter run
 time.
 
-The \red{green} curve shows the weak scaling for the fiducial \nameCores\
+The \red{green} curve shows the strong scaling for the fiducial \nameCores\
 simulation.  This simulation has $512^3$ zones and $1024^3$ tracer particles.
-On each of 4 levels, we refine a cubic region with volume identical to the simulations
-in \citep{Collins12}.  We additionally use the gravity solver and MHD solvers.
+On each of 4 levels, we refine a cubic region with volume based on the simulations
+in \citep{Collins12}.  This package uses the gravity solver and MHD solvers as
+well as the particle update machinery.
 For this simulation, the density and pressure are uniform, which simplifies the
-setup but does not affect the timing of the solver.  \red{what number I use}
+setup but does not affect the timing of the solver.  We will run these
+simulations on 32 nodes as well, as the timing is favorable. 
+Using 32 nodes will also give more peak memory, which is important as the memory
+load during the simulation is far from constant as the mesh structure rebuilds
+itself.
 
 The \red{red} line shows the scaling for the \nameCMB\ simulations. The fiducial
 simulation is also $1024^3$ and driving like the \nameTurbulence\ suite, but uses the MHD solver so is slightly more
@@ -88,8 +97,8 @@ Again, we will use 32 nodes due to the short run times.
 
 The final suite is the \nameGalaxies\ suite, shown in \red{purple}.  This suite
 employs the most additional physics packages (including star formation,
-cooling and heating, and chemistry).  The AMR structure, outlined in greater
-detail in the main document, is a nest of refinements, each about 1/8 of its
+cooling and heating, and chemistry).  The AMR structure
+ is a nest of refinements, each about 1/8 of its
 parent by volume (about half the length), that allows us to resolve both the disk and the circumgalactic medium.
 It also gives roughly constant memory per level.
 The fiducial simulations use 5 levels of refinement, rather than the target
@@ -100,7 +109,7 @@ patches per level, so we run our scaling study from 1 to 5 nodes with 64 cores
 per node.     
 This scaling is good, rising from $2\sci{-11}$ to $3\sci{-11}$. The refinement
 structure will continue to 9 levels in the production runs, so we will use 9
-nodes for them.  
+nodes for the production simulations.
 
 \begin{figure} \begin{center}
     \includegraphics[width=0.99\textwidth]{figs/g47_zoneup.pdf}
