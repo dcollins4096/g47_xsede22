@@ -38,7 +38,11 @@ structure of the production simulations.
 We perform a single time step on
 the root grid, which takes many time steps on the subgrids. 
 That time step is then repeated several times with an increasing number of
-nodes.
+nodes.  Table \ref{table1} summarizes each of the suites, the total cost, the
+physics package used, the AMR structure, the cost per update, and the number
+of nodes to be used.
+
+\input{table1}
 
 The results can be seen in Figure \ref{fig.scaling}. Shown in the figure is \suzu, the number of
 service units for the update of one cell, assuming 64 cores per node.  Each of
@@ -56,7 +60,7 @@ Given perfect scaling, $\suzu$ is independent of
 processor count.  However, our scaling is imperfect, and the optimal node number is
 selected from  Figure \ref{fig.scaling}.
 
-The \red{blue} line shows a set of 
+The blue line shows a set of 
 fiducial simulations that use only the
 relevant hydro solvers and gravity.  The hydro (or MHD) solver and gravity
 solver are the most expensive part of the code, so we present their timing alone
@@ -66,7 +70,7 @@ Parabolic Method \citep{Colella84} for the pure hydro turbulence simulations,
 or the second order MHD scheme of \citep{Li08a} for the other three.  The points
 in the blue line are, bottom to top, PPM, MHD, PPM+Gravity, MHD+Gravity.  
 
-The \red{orange} line shows the scaling for the fiducial \nameTurbulence\
+The orange line shows the scaling for the fiducial \nameTurbulence\
 simulations.  These simulations will only use PPM and the turbulent driving
 module, so only slightly more expensive than the baseline.  The
 fiducial simulation is, as the production simulations will be, $1024^3$ root
@@ -77,7 +81,7 @@ will run on 32
 nodes, as the small increase in cost will be offset by the much shorter run
 time.
 
-The \red{green} curve shows the strong scaling for the fiducial \nameCores\
+The green curve shows the strong scaling for the fiducial \nameCores\
 simulation.  This simulation has $512^3$ zones and $1024^3$ tracer particles.
 On each of 4 levels, we refine a cubic region with volume based on the simulations
 in \citep{Collins12}.  This package uses the gravity solver and MHD solvers as
@@ -89,7 +93,7 @@ Using 32 nodes will also give more peak memory, which is important as the memory
 load during the simulation is far from constant as the mesh structure rebuilds
 itself.
 
-The \red{red} line shows the scaling for the \nameCMB\ simulations. The fiducial
+The red line shows the scaling for the \nameCMB\ simulations. The fiducial
 simulation is also $1024^3$ and driving like the \nameTurbulence\ suite, but uses the MHD solver so is slightly more
 expensive.  Due to the increased memory of the extra magnetic fields, we run on
 8, 16, and 32 nodes.  We find $\suzu=2\sci{-11}-7\sci{-11}$.  
@@ -110,6 +114,7 @@ per node.
 This scaling is good, rising from $2\sci{-11}$ to $3\sci{-11}$. The refinement
 structure will continue to 9 levels in the production runs, so we will use 9
 nodes for the production simulations.
+
 
 \begin{figure} \begin{center}
     \includegraphics[width=0.99\textwidth]{figs/g47_zoneup.pdf}

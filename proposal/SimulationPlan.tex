@@ -1,6 +1,8 @@
 \section{Simulation Plan}
 \label{sec.plan}
 
+\input{table2}
+
 Here we will outline the simulations to be performed for each of the projects.
 
 The total cost for one simulation is determined by multiplying the cost for a
@@ -92,14 +94,17 @@ table is the name; the parameter, either Mach number, level, or Sonic and \alf\
 Mach numbers;  the volume fraction; the number of zones $N_Z$; the total
 simulation time $T$; the timestep size $\Delta T$; the total number of
 updates $N_U$; the cost per update given the AMR and physics usage, $\suzu$; and
-finally the total SU cost.  
+finally the total SU cost.  The table also displays disk usage for these
+simulations.
 
-The disk usage is also estimated from the number of zones, $N_Z$.  Each zone
+The {\bf long term disk storage} requested has two portions; the new
+simulations, and our archive of simulations that are still bearing fruit.
+Our existing archive of previous simulations is $7\sci{4}$Gb.
+Disk usage for the current request, presented in Table 2, is estimated from the number of zones, $N_Z$.  Each zone
 stores a number of fields, $N_F$: 5 for \nameTurbulence (density, 3 velocity, and
 energy); 14 for \nameCores\ and
 \nameCMB (density, energy, 3 velocity, 3 magnetic fields, 3 electric fields, 3
 additional magnetic fields, see \citet{Collins10}); 24 for the \nameGalaxies\
 suite (14 for MHD, 10 for additional chemistry fields.)  So the total memory is
-8 bytes for all of $N_Z N_F$ fields.  It is listed in Gb in the table.
+8 bytes for all of $N_Z\times N_F$ fields.  It is listed in Gb in the table.
 
-\input{table2}
